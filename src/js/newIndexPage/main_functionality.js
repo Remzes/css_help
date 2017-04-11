@@ -1327,7 +1327,7 @@ $(document).on("keydown", "#css_font_sizeinput", function (e) {
     $("#fonSi").html(new_Value + "px");
 });//End of function
 
-//Function to change style of the font font
+//Function to change style of the font
 $(document).on("change", "#css_font_styleselect", function () {
     paraToChange.css("font-style", $(this).val());
     switch ($(this).val()) {
