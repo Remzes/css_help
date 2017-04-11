@@ -1,0 +1,47 @@
+.options {
+    padding: 10px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.main-input-text {
+    padding: 10px;
+    border: solid 5px #c9c9c9;
+    transition: border 0.3s;
+    font-size: 18px;
+    outline: none;
+}
+
+.main-input-text input[type="checkbox"] {
+    padding: 5px;
+}
+
+label {
+    font-family: Verdana, sans-serif;
+}
+
+.changing-p {
+    wrap-option: wrap;
+}
+
+#change-here {
+    width: 100%;
+}
+
+input[type="range"] {
+    width: 200px !important;
+}
+
+.box-shadow-section, .text-shadow-properties, .border-properties, .opacity-section {
+    display: none;
+    padding: 20px;
+}
+
+#tabTwo, #tabThree, #tabFour {
+    display: none;
+    padding: 20px;
+}
+
+.widthInput {
+    width: 200px !important;
+}

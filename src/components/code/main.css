@@ -1,0 +1,17 @@
+.container {
+    width: 100%;
+}
+
+.code {
+    float: right;
+    border: 1px solid #ccc;
+    width: 35%
+}
+
+.code_buttons {
+    padding: 10px;
+}
+
+.code_output {
+    padding: 0 10px 10px 10px;
+}

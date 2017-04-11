@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Options</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<section class="container">
+    <section class="tabs">
+        <button class="tablinks active" id="gen_style">General Style</button>
+        <button class="tablinks" id="t_form">Text Format</button>
+        <button class="tablinks" id="f_form">Font Format</button>
+        <button class="tablinks" id="b_s">Box Shadow</button>
+        <button class="tablinks" id="t_s">Text Shadow</button>
+        <button class="tablinks" id="bord">Border</button>
+        <button class="tablinks" id="opac">Opacity</button>
+    </section>
+
+    <section class="tabcontent gen_style" style="display: block">
+        <section class="getStyle_tab">
+            <!-- Width -->
+            <p>
+                <label for="width">Width: </label><input type="number" id="width" max="1024" min="200" step="15"
+                                                         class="widthInput"><span id="widthSpan">1024px</span>
+            </p>
+            <!-- Padding -->
+            <p>
+                <label for="padding">Padding: </label><input type="range" id="padding" min="0" max="100" step="1"
+                                                             value="0"
+                                                             class="paddingInput"><span id="paddingSpan">0px</span>
+            </p>
+            <!-- Color --> <!-- DONE -->
+            <p>
+                <label for="customColor">Color: </label><input type="text" id="customColor"/>&nbsp;
+                <button id="resetColor" class="waves-effect waves-light btn">Reset</button>
+            </p>
+            <!-- Background-color --> <!-- DONE -->
+            <p>
+                <label for="customBColor">Background color: </label><input type="text" id="customBColor"/>&nbsp;
+                <button id="resetBgColor" class="waves-effect waves-light btn">Reset</button>
+            </p>
+        </section>
+    </section>
+
+    <section class="tabcontent t_form">
+        <div id="tabTwo">
+            <section class="left-side">
+                <p>
+                    <label for="fontSelect">Choose your font</label>
+                    <select name="fontSelect" id="fontSelect">
+                        <option value="Sansita|'Sansita', sans-serif">Sansita</option>
+                        <option value="Roboto|'Roboto', sans-serif">Roboto</option>
+                    </select>
+                </p>
+                <!--Letter-Spacing--> <!-- -- DONE -- -->
+                <p>
+                    <label for="letterSpacingInput">Space between letters:</label><input type="range"
+                                                                                         id="letterSpacingInput"
+                                                                                         min="-10" max="20"
+                                                                                         value="0"><span
+                        id="letSpac">0px</span>
+                </p>
+
+                <!--Line-height--> <!-- -- DONE -- -->
+                <p>
+                    <label for="lineHeightInput">Line</label><input type="range" id="lineHeightInput" min="0"
+                                                                    max="100" value="20"><span
+                        id="linHei">0px</span>
+                </p>
+
+                <!--Text-alignment--> <!-- -- DONE -- -->
+                <p>
+                    <label>Text alignment:</label><br>
+                    <input type="radio" id="left" value="left" name="align" checked="checked"> <label
+                        for="left">Left</label>
+                    <input type="radio" value="right" id="right" name="align"><label for="right">Right</label>
+                    <input type="radio" id="center" value="center" name="align"><label for="center">Center</label>
+                </p>
+            </section>
+            <section class="right-side">
+                <!--Text Decoration--> <!-- -- DONE -- -->
+                <p>
+                    <label>Text decoration:</label><br>
+                    <input type="checkbox" id="over" value="overline"> <label for="over">Make overlined</label>
+                    <input type="checkbox" id="through" value="line-through"><label for="through">Make
+                    strikethrough</label>
+                    <input type="checkbox" id="under"><label for="under">Make underlined</label>
+                </p>
+
+                <!--Text Transform--> <!-- -- DONE -- -->
+                <p>
+                    <label>Text transformation:</label>
+                    <input type="radio" name="transform" id="upper" value="uppercase"><label for="upper"
+                                                                                             id="upperLabel">Uppercase</label>
+                    <input type="radio" name="transform" id="lower" value="lowercase"><label
+                        for="lower">Lowercase</label>
+                    <input type="radio" id="none" name="transform" value="none"><label for="none">none</label>
+                </p>
+
+                <!--Word Spacing--> <!-- -- DONE -- -->
+                <p>
+                    <label for="wordSpacingInput">Space between words</label><input type="range"
+                                                                                    id="wordSpacingInput" min="-20"
+                                                                                    max="80"><span
+                        id="wordSpac">0px</span>
+                </p>
+            </section>
+        </div>
+    </section>
+
+    <section class="tabcontent f_form">
+        <div id="tabThree">
+            <!--&lt;!&ndash; Font-family &ndash;&gt; &lt;!&ndash; THINK ABOUT THE IMPLEMENTATION &ndash;&gt;-->
+            <!--<p>-->
+            <!--</p>-->
+            <!-- Font-size --> <!-- DONE -->
+            <p>
+                <label for="fontSizeInput">Size of the Font: </label>
+                <input type="range" id="fontSizeInput" min="1" max="60" value="20"><span id="fonSi">20px</span>
+            </p>
+            <!-- Font-style --> <!-- DONE -->
+            <p>
+                <label>Style of the font:</label><br>
+                <input type="radio" id="italic" value="italic" name="fontStyle"><label for="italic">Italic font
+                style</label>
+                <input type="radio" id="oblique" value="oblique" name="fontStyle"> <label for="oblique">Oblique
+                font style</label>
+                <input type="radio" id="normalFS" checked="checked" value="normal" name="fontStyle"> <label
+                    for="normalFS">default</label>
+            </p>
+            <!-- Font-weight --> <!-- DONE -->
+            <p>
+                <label for="fontWeightSelect">Weight of the font</label>
+                <select name="fontWeightSelect" id="fontWeightSelect">
+                    <option value="normal">default</option>
+                    <option value="bold">bold</option>
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                    <option value="300">300</option>
+                    <option value="400">400</option>
+                    <option value="500">500</option>
+                    <option value="600">600</option>
+                    <option value="700">700</option>
+                    <option value="800">800</option>
+                    <option value="900">900</option>
+                </select>
+            </p>
+            <!-- Font-variant --> <!-- DONE -->
+            <p>
+                <label>Variant of the font:</label><br>
+                <input type="radio" id="smallCaps" value="small-caps" name="smallC"><label for="smallCaps"
+                                                                                           id="scLabel">Small
+                Caps</label>
+                <input type="radio" value="normal" id="normalFV" name="smallC" checked="checked"> <label
+                    for="normalFV">default</label>
+            </p>
+        </div>
+    </section>
+
+    <section class="tabcontent b_s">
+        <p class="box-shadow-section">
+            <label for="hs">(include)</label><input type="checkbox" id="hs" value="hs"
+                                                    data-role="hshadow">
+            <label>Horizontal shadow: </label><input type="range" min="-20" id="hsRange" max="20"
+                                                     value="0"
+                                                     disabled="disabled" data-attribute="hshadow"><span
+                id="hsRangeSpan">0px</span><br>
+
+            <label for="vs">(include)</label><input type="checkbox" id="vs" value="vs"
+                                                    data-role="vshadow">
+            <label>Vertical Shadow: </label><input type="range" min="-20" id="vsRange" max="20"
+                                                   value="0"
+                                                   disabled="disabled" data-attribute="vshadow"><span
+                id="vsRangeSpan">0px</span><br>
+
+            <label for="b">(include)</label><input type="checkbox" id="b" value="b" data-role="blur">
+            <label>Blur: </label><input type="range" min="-20" max="20" id="bRange" value="0"
+                                        disabled="disabled" data-attribute="blur"><span
+                id="bRangeSpan">0px</span><br>
+
+            <label for="sp">(include)</label><input type="checkbox" id="sp" value="sp"
+                                                    data-role="spread">
+            <label>Spread: </label><input type="range" min="-20" max="20" value="0" id="spRange"
+                                          disabled="disabled" data-attribute="spread"><span
+                id="spRangeSpan">0px</span><br>
+
+            <label for="c">(include)</label><input type="checkbox" id="c" value="c">
+            <label>Color: </label><input type="text" id="custom"><br><br>
+
+            <button id="boxShadowGen" class="waves-effect waves-light btn">Add Box Shadow</button>
+            <button id="bsResetBtn" class="waves-effect waves-light btn">Reset all box-shadow
+                properties
+            </button>
+        </p>
+    </section>
+
+    <section class="tabcontent t_s">
+        <p class="text-shadow-properties">
+            <label for="hsTS">(include)</label><input type="checkbox" id="hsTS" value="hs"
+                                                      data-role="hshadow">
+            <label>Horizontal shadow: </label><input type="range" min="-20" id="hsTSRange" max="20"
+                                                     value="0"
+                                                     disabled="disabled" data-attribute="hshadow"><span
+                id="hsTSRangeTSSpan">0px</span><br>
+
+            <label for="vsTS">(include)</label><input type="checkbox" id="vsTS" value="vs"
+                                                      data-role="vshadow">
+            <label>Vertical Shadow: </label><input type="range" min="-20" id="vsTSRange" max="20"
+                                                   value="0"
+                                                   disabled="disabled" data-attribute="vshadow"><span
+                id="vsTSRangeTSSpan">0px</span><br>
+
+            <label for="bTS">(include)</label><input type="checkbox" id="bTS" value="b"
+                                                     data-role="blurRad">
+            <label>Blur-radius: </label><input type="range" min="-20" max="20" id="bTSRange" value="0"
+                                               disabled="disabled" data-attribute="blurRad"><span
+                id="bTSRangeTSSpan">0px</span><br>
+
+            <label for="cTS">(include)</label><input type="checkbox" id="cTS" value="cTS">
+            <label for="tsColor">Color: </label><input type="text" id="tsColor"><br><br>
+
+            <button id="boxTSShadowGen" class="waves-effect waves-light btn">Add Text Shadow</button>
+            <button id="bsTSResetBtn" class="waves-effect waves-light btn">Reset all text-shadow
+                properties
+            </button>
+        </p>
+    </section>
+
+    <section class="tabcontent bord">
+        <section class="border-properties">
+            <h3>Sides</h3>
+            <p>
+                <label for="borderRadius">Border Radius: </label><input type="range" id="borderRadius"
+                                                                        value="0" min="0" max="50">
+                <span id="borderRadiusSpan">0px</span><br/>
+            </p>
+            <label>Include:</label><br>
+            <input type="checkbox" id="leftBord" value="border-left"><label for="leftBord">Left
+            border</label> <br>
+            <input type="checkbox" id="rightBord" value="border-right"><label for="rightBord">Right
+            border</label><br>
+            <input type="checkbox" id="topBord" value="border-top"><label for="topBord">Top
+            border</label><br>
+            <input type="checkbox" id="bottomBord" value="border-bottom"><label for="bottomBord">Bottom
+            border</label><br>
+            <input type="checkbox" id="allBord" value="border"><label for="allBord">Full
+            Border</label><br>
+
+            <!-- Border Customization Part-->
+            <!--Styles for left border-->
+            <p id="leftBordColorPara" style="display: none" class="border_custom">
+                <span class="border_custom-header">Customize Left Border</span><br/>
+                <label for="clrzleftBord">Choose Color: </label><input type="text" id="clrzleftBord"
+                                                                       data-side="border-left"
+                                                                       data-property="color"><br/>
+                <label for="leftBordRange">Choose Size: </label><input type="range" min="1" max="30"
+                                                                       value="1" id="leftBordRange"
+                                                                       data-side="border-left"
+                                                                       data-property="size"><span
+                    id="border-left-span">1px</span><br/>
+                <label for="leftBordStyle">Choose Type: </label>
+                <select name="border-style-select" id="leftBordStyle" data-side="border-left"
+                        data-property="type">
+                    <option value="solid">Solid</option>
+                    <option value="dotted">Dotted</option>
+                    <option value="dashed">Dashed</option>
+                    <option value="double">Double</option>
+                    <option value="groove">Groove</option>
+                    <option value="ridge">Ridge</option>
+                    <option value="inset">Inset</option>
+                    <option value="outset">Outset</option>
+                    <option value="hidden">Hidden</option>
+                </select>
+            </p><!--End of styles for left border-->
+
+            <!--Styles for Right Border-->
+            <p id="rightBordColorPara" style="display: none" class="border_custom">
+                <span class="border_custom-header">Customize Right Border</span><br/>
+                <label for="clrzrightBord">Choose Color: </label><input type="text" id="clrzrightBord"
+                                                                        data-side="border-right"
+                                                                        data-property="color"><br/>
+                <label for="rightBordRange">Choose Size: </label><input type="range" min="1" max="30"
+                                                                        value="1" id="rightBordRange"
+                                                                        data-side="border-right"
+                                                                        data-property="size"><span
+                    id="border-right-span">1px</span><br/>
+                <label for="rightBordStyle">Choose Type: </label>
+                <select name="border-style-select" id="rightBordStyle" data-side="border-right"
+                        data-property="type">
+                    <option value="solid">Solid</option>
+                    <option value="dotted">Dotted</option>
+                    <option value="dashed">Dashed</option>
+                    <option value="double">Double</option>
+                    <option value="groove">Groove</option>
+                    <option value="ridge">Ridge</option>
+                    <option value="inset">Inset</option>
+                    <option value="outset">Outset</option>
+                    <option value="hidden">Hidden</option>
+                </select>
+            </p><!--End of styles for Right Border-->
+
+            <!--Styles for Top Border-->
+            <p id="topBordColorPara" style="display: none" class="border_custom">
+                <span class="border_custom-header">Customize Top Border</span><br/>
+                <label for="clrztopBord">Choose Color: </label><input type="text" id="clrztopBord"
+                                                                      data-side="border-top"
+                                                                      data-property="color"><br/>
+                <label for="topBordRange">Choose Size: </label><input type="range" min="1" max="30"
+                                                                      value="1"
+                                                                      id="topBordRange"
+                                                                      data-side="border-top"
+                                                                      data-property="size"><span
+                    id="border-top-span">1px</span><br/>
+                <label for="topBordStyle">Choose Type: </label>
+                <select name="border-style-select" id="topBordStyle" data-side="border-top"
+                        data-property="type">
+                    <option value="solid">Solid</option>
+                    <option value="dotted">Dotted</option>
+                    <option value="dashed">Dashed</option>
+                    <option value="double">Double</option>
+                    <option value="groove">Groove</option>
+                    <option value="ridge">Ridge</option>
+                    <option value="inset">Inset</option>
+                    <option value="outset">Outset</option>
+                    <option value="hidden">Hidden</option>
+                </select>
+            </p><!--End of styles for Top Border-->
+
+            <!--Styles for Bottom Border-->
+            <p id="bottomBordColorPara" style="display: none" class="border_custom">
+                <span class="border_custom-header">Customize Bottom Border</span><br/>
+                <label for="clrzbottomBord">Choose Color: </label><input type="text" id="clrzbottomBord"
+                                                                         data-side="border-bottom"
+                                                                         data-property="color"><br/>
+                <label for="bottomBordRange">Choose Size: </label><input type="range" min="1" max="30"
+                                                                         value="1" id="bottomBordRange"
+                                                                         data-side="border-bottom"
+                                                                         data-property="size"><span
+                    id="border-bottom-span">1px</span><br/>
+                <label for="bottomBordStyle">Choose Type: </label>
+                <select name="border-style-select" id="bottomBordStyle" data-side="border-bottom"
+                        data-property="type">
+                    <option value="solid">Solid</option>
+                    <option value="dotted">Dotted</option>
+                    <option value="dashed">Dashed</option>
+                    <option value="double">Double</option>
+                    <option value="groove">Groove</option>
+                    <option value="ridge">Ridge</option>
+                    <option value="inset">Inset</option>
+                    <option value="outset">Outset</option>
+                    <option value="hidden">Hidden</option>
+                </select>
+            </p><!--End of styles for Bottom Border-->
+
+            <!--Styles for the Whole Border-->
+            <p id="allBordColorPara" style="display: none" class="border_custom">
+                <span class="border_custom-header">Customize All Borders</span><br/>
+                <label for="clrzallBord">Choose Color: </label><input type="text" id="clrzallBord"
+                                                                      data-side="border"><br/>
+                <label for="allBordRange">Choose Size: </label><input type="range" min="1" max="30"
+                                                                      value="1"
+                                                                      id="allBordRange"
+                                                                      data-side="border"><span
+                    id="border-span">1px</span><br/>
+                <label for="allBordStyle">Choose Type: </label>
+                <select name="border-style-select" id="allBordStyle" data-side="border">
+                    <option value="solid">Solid</option>
+                    <option value="dotted">Dotted</option>
+                    <option value="dashed">Dashed</option>
+                    <option value="double">Double</option>
+                    <option value="groove">Groove</option>
+                    <option value="ridge">Ridge</option>
+                    <option value="inset">Inset</option>
+                    <option value="outset">Outset</option>
+                    <option value="hidden">Hidden</option>
+                </select>
+            </p><!--End of styles for the Whole Border-->
+            <!--End of Border Customization Part-->
+
+        </section>
+    </section>
+
+    <section class="tabcontent opac">
+        <section class="opacity-section">
+            <!--The whole element opacity-->
+            <p>
+                <label for="allRange">Opacity for the whole element: </label><input type="range"
+                                                                                    id="allRange"
+                                                                                    min="0.00"
+                                                                                    step="0.005"
+                                                                                    value="1"
+                                                                                    max="1"><span
+                    id="allSpan">1</span>
+            </p>
+            <!--Text-color opacity-->
+            <p>
+                <label for="cRange">Opacity for text color: </label><input type="range" id="cRange"
+                                                                           min="0.00" step="0.001"
+                                                                           value="1"
+                                                                           max="1"><span
+                    id="cSpan">1</span>
+            </p>
+            <!--Background-color opacity-->
+            <p style="display: none" id="bcPara">
+                <label for="bcRange">Opacity for background color: </label><input type="range"
+                                                                                  id="bcRange"
+                                                                                  min="0.00"
+                                                                                  step="0.005"
+                                                                                  value="1" max="1"
+                                                                                  disabled="disabled"><span
+                    id="bcSpan">1</span>
+            </p>
+            <!--The box-shadow color opacity-->
+            <p style="display: none" id="bsPara">
+                <label for="bsRange">Opacity for box-shadow: </label><input type="range"
+                                                                            id="bsRange" min="0.00"
+                                                                            step="0.005" value="1"
+                                                                            max="1" disabled="disabled"><span
+                    id="bsSpan">1</span>
+            </p>
+            <!--The text-shadow color opacity-->
+            <p style="display: none" id="tsPara">
+                <label for="tsRange">Opacity for text-shadow: </label><input type="range"
+                                                                             id="tsRange" min="0.00"
+                                                                             step="0.005" value="1"
+                                                                             max="1"
+                                                                             disabled="disabled"><span
+                    id="tsSpan">1</span>
+            </p>
+            <!--The border color opacity-->
+            <p style="display: none" id="allBordInclude">
+                <label for="allBordRangeOpacity">Opacity for the whole border: </label><input
+                    type="range"
+                    id="allBordRangeOpacity"
+                    min="0.00"
+                    step="0.005"
+                    value="1"
+                    data-side="border"
+                    max="1"><span
+                    id="allBordSpan">1</span><br>
+            </p>
+            <p style="display: none" id="leftBordInclude">
+                <label for="leftBordRangeOpacity">Opacity for left border: </label><input type="range"
+                                                                                          id="leftBordRangeOpacity"
+                                                                                          min="0.00"
+                                                                                          step="0.005"
+                                                                                          value="1"
+                                                                                          data-side="left-border"
+                                                                                          max="1"><span
+                    id="leftBordSpan">1</span><br>
+            </p>
+            <p style="display: none" id="rightBordInclude">
+                <label for="rightBordRangeOpacity">Opacity for right border: </label><input type="range"
+                                                                                            id="rightBordRangeOpacity"
+                                                                                            min="0.00"
+                                                                                            step="0.005"
+                                                                                            value="1"
+                                                                                            data-side="border-right"
+                                                                                            max="1"><span
+                    id="rightBordSpan">1</span><br>
+            </p>
+            <p style="display: none" id="topBordInclude">
+                <label for="topBordRangeOpacity">Opacity for top border: </label><input type="range"
+                                                                                        id="topBordRangeOpacity"
+                                                                                        min="0.00"
+                                                                                        step="0.005" value="1"
+                                                                                        data-side="border-top"
+                                                                                        max="1"><span
+                    id="topBordSpan">1</span><br>
+            </p>
+            <p style="display: none" id="bottomBordInclude">
+                <label for="bottomBordRangeOpacity">Opacity for bottom border: </label><input
+                    type="range"
+                    id="bottomBordRangeOpacity"
+                    min="0.00"
+                    step="0.005" value="1"
+                    data-side="border-bottom"
+                    max="1"><span
+                    id="bottomBordSpan">1</span><br>
+            </p>
+
+        </section>
+    </section>
+
+</section>
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+<script src="js.js"></script>
+</body>
+</html>

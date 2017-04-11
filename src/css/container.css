@@ -1,0 +1,16 @@
+.container {
+    width: 80%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #FBFFF9;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container:after {
+    content: "";
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}

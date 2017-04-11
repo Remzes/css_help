@@ -1,0 +1,7 @@
+.text {
+    display: flex;
+    flex-basis: 48%;
+    min-width: 530px;
+    flex-grow: 1;
+
+}

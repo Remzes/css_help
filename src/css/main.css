@@ -1,0 +1,36 @@
+@import "wrapper.css";
+@import "text.css";
+@import "changing.css";
+@import "container.css";
+@import "inside-text.css";
+@import "p-changing.css";
+@import "options.css";
+@import "paragraph-with-change-input.css";
+@import "non_active.css";
+@import "style-format-section.css";
+@import "border-properties.css";
+@import "border_custom.css";
+
+@media screen and (max-width: 1060px){
+    .text {
+        border-bottom: 1px solid black;
+        border-right: none;
+    }
+}
+
+html, body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+label {
+    font-size: 18px !important;
+    font-family: "Open Sans", sans-serif;
+    color: #0E7884;
+}
+
+select {
+    display: inline-block !important;
+    width: 100px;
+}

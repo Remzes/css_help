@@ -1,0 +1,14 @@
+.border_custom {
+    border-bottom: 1px solid #000;
+    width: 400px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    float: left;
+}
+
+
+
+.border_custom-header {
+    color: #ff0000;
+    font-size: 20px;
+}

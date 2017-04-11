@@ -1,0 +1,18 @@
+.changing-p {
+    overflow: hidden;
+    display: block;
+    margin: auto;
+    font-size: 20px;
+    font-family: "Century Gothic", sans-serif;
+    padding: 50px;
+    width: 100%;
+    word-break: break-all;
+    white-space: normal;
+}
+
+.changing-p span {
+    display: inline-block;
+    /*width: 95%;*/
+    transition: all ease-in-out .175s;
+    text-overflow: clip;
+}
