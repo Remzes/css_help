@@ -57,24 +57,24 @@
                             </p>
                             <section id="text_decoration_paragraph" style="display: none">
                                 <span class="code_label"></span><span id="css_text_decoration" class="code_prop"></span>
-                            <form class="multiselect_form" id="multiselect_form">
-                                <div class="multiselect" >
-                                    <div class="selectBox" >
-                                        <select id="select_inside_form">
-                                            <option>Select an option</option>
-                                        </select>
-                                        <div class="overSelect" id="overSelect"></div>
+                                <form class="multiselect_form" id="multiselect_form">
+                                    <div class="multiselect">
+                                        <div class="selectBox">
+                                            <select id="select_inside_form">
+                                                <option>Select an option</option>
+                                            </select>
+                                            <div class="overSelect" id="overSelect"></div>
+                                        </div>
+                                        <div id="checkboxes">
+                                            <label for="overline" id="overline_lbl">
+                                                <input type="checkbox" id="overline"/>overline</label>
+                                            <label for="line-through" id="line-through_lbl">
+                                                <input type="checkbox" id="line-through"/>line-through</label>
+                                            <label for="underline" id="underline_lbl">
+                                                <input type="checkbox" id="underline"/>underline</label>
+                                        </div>
                                     </div>
-                                    <div id="checkboxes">
-                                        <label for="overline" id="overline_lbl">
-                                            <input type="checkbox" id="overline" />overline</label>
-                                        <label for="line-through" id="line-through_lbl">
-                                            <input type="checkbox" id="line-through" />line-through</label>
-                                        <label for="underline" id="underline_lbl">
-                                            <input type="checkbox" id="underline" />underline</label>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
                             </section>
                             <p id="text_transform_paragraph" style="display: none">
                                 <span class="code_label"></span><span id="css_text_transform" class="code_prop"></span>
@@ -102,20 +102,52 @@
 
                             <!------- BOX SHADOW ----------->
                             <p id="box_shadow_paragraph" style="display: none">
-                                <span class="code_label"></span><span id="css_box_shadow" class="code_prop"></span>
-                            </p>
-                            <p id="webkit_box_shadow_paragraph" style="display: none">
-                                <span class="code_label"></span><span id="webkit_css_box_shadow"
-                                                                      class="code_prop"></span>
-                            </p>
-                            <p id="moz_box_shadow_paragraph" style="display: none">
-                                <span class="code_label"></span><span id="moz_css_box_shadow" class="code_prop"></span>
+                                <span class="code_label"></span>
+                                <!-- CSS code for box-shadow property without prefixes -->
+                                <span id="css_box_shadow">
+                                    <span class="code_prop no_prefix" id="bs_hs"></span>
+                                    <span class="code_prop no_prefix" id="bs_vs"></span>
+                                    <span class="code_prop no_prefix" id="bs_blur"></span>
+                                    <span class="code_prop no_prefix" id="bs_spread"></span>
+                                    <span class="code_prop no_prefix" id="bs_color"></span>
+                                </span>
+                                <!-- End of CSS code -->
                             </p>
 
+                            <p id="webkit_box_shadow_paragraph" style="display: none">
+                                <span class="code_label"></span>
+                                <!-- CSS code for box-shadow property with -webkit prefix -->
+                                <span id="webkit_css_box_shadow">
+                                    <span class="code_prop webkit" id="webkit_bs_hs"></span>
+                                    <span class="code_prop webkit" id="webkit_bs_vs"></span>
+                                    <span class="code_prop webkit" id="webkit_bs_blur"></span>
+                                    <span class="code_prop webkit" id="webkit_bs_spread"></span>
+                                    <span class="code_prop webkit" id="webkit_bs_color"></span>
+                                </span>
+                                <!-- End of CSS code -->
+                            </p>
+
+                            <p id="moz_box_shadow_paragraph" style="display: none">
+                                <span class="code_label"></span>
+                                <!-- CSS code for box-shadow property with -moz prefix -->
+                                <span id="moz_css_box_shadow">
+                                    <span class="code_prop moz" id="moz_bs_hs"></span>
+                                    <span class="code_prop moz" id="moz_bs_vs"></span>
+                                    <span class="code_prop moz" id="moz_bs_blur"></span>
+                                    <span class="code_prop moz" id="moz_bs_spread"></span>
+                                    <span class="code_prop moz" id="moz_bs_color"></span>
+                                </span>
+                                <!-- End of CSS code -->
+                            </p>
+                            <!------ END OF BOX SHADOW ------>
+
+                            <!-------- TEXT SHADOW ---------->
                             <p id="text_shadow_paragraph" style="display: none">
                                 <span class="code_label"></span><span id="css_text_shadow" class="code_prop"></span>
                             </p>
+                            <!----- END OF TEXT SHADOW ------>
 
+                            <!------ BORDER RADIUS ---------->
                             <p id="border_radius_paragraph" style="display: none">
                                 <span class="code_label"></span><span id="css_border_radius" class="code_prop"></span>
                             </p>
@@ -127,9 +159,10 @@
                                 <span class="code_label"></span><span id="moz-css_border_radius"
                                                                       class="code_prop"></span>
                             </p>
-                            <!-- END OF BOX SHADOW ---------->
+                            <!------END OF TEXT SHADOW -------->
 
-                            <!------- BORDER PROP ----------->
+
+                            <!---------- BORDER PROP ----------->
                             <p id="border_paragraph" style="display: none">
                                 <span class="code_label"></span><span id="css_border" class="code_prop"></span>
                             </p>
@@ -226,7 +259,7 @@
                     <!--Line-height--> <!-- -- DONE -- -->
                     <p>
                         <label for="lineHeightInput">Line Height:</label><input type="range" id="lineHeightInput"
-                                                                        value="20"><span
+                                                                                value="20"><span
                             id="linHei">20px</span>
                     </p>
 
@@ -335,13 +368,13 @@
                     id="vsRangeSpan">0px</span><br>
 
                 <label for="b">(include)</label><input type="checkbox" id="b" value="b" data-role="blur">
-                <label>Blur: </label><input type="range" min="-20" max="20" id="bRange" value="0"
+                <label>Blur: </label><input type="range" min="0" max="20" id="bRange" value="0"
                                             disabled="disabled" data-attribute="blur"><span
                     id="bRangeSpan">0px</span><br>
 
                 <label for="sp">(include)</label><input type="checkbox" id="sp" value="sp"
                                                         data-role="spread">
-                <label>Spread: </label><input type="range" min="-20" max="20" value="0" id="spRange"
+                <label>Spread: </label><input type="range" min="0" max="20" value="0" id="spRange"
                                               disabled="disabled" data-attribute="spread"><span
                     id="spRangeSpan">0px</span><br>
 
@@ -372,7 +405,7 @@
 
                 <label for="bTS">(include)</label><input type="checkbox" id="bTS" value="b"
                                                          data-role="blurRad">
-                <label>Blur-radius: </label><input type="range" min="-20" max="20" id="bTSRange" value="0"
+                <label>Blur-radius: </label><input type="range" min="0" max="20" id="bTSRange" value="0"
                                                    disabled="disabled" data-attribute="blurRad"><span
                     id="bTSRangeTSSpan">0px</span><br>
 

@@ -451,7 +451,7 @@ $("#italic, #oblique, #normalFS").on("change", function () {
 });//End of Font-style function
 
 //Font-weight function
-function fontWeightFunction(){
+function fontWeightFunction() {
     paraToChange.css("font-weight", $("#fontWeightSelect").val());
     switch ($("#fontWeightSelect").val() != "400") {
         case true:
@@ -467,7 +467,7 @@ function fontWeightFunction(){
 $("#fontWeightSelect").on("change", fontWeightFunction);//End of the Font-weight function
 
 //Font-variant function
-$("#smallCaps, #normalFV").on("change", function () {
+function fontVariantFunction() {
     paraToChange.css("font-variant", $(this).val());
     if ($(this).val() == "small-caps") {
         $("#upperLabel").css("opacity", 0.5);
@@ -480,7 +480,13 @@ $("#smallCaps, #normalFV").on("change", function () {
         $("#upper").removeAttr("disabled");
         $("#font_variant_paragraph").css("display", "none");
     }
-});//End of the Font-variant function
+}
+
+function fontVariant() {
+
+}
+
+$("#smallCaps, #normalFV").on("change", fontVariantFunction);//End of the Font-variant function
 //------------End of Font Format--------------//
 
 //---------------Box Shadow-------------------//
@@ -553,12 +559,32 @@ $("#boxShadowGen").on("click", function (e) {
         case true:
             $("#bsPara").css("display", "block");
             $("#bsRange").prop("disabled", false);
+
             $("#box_shadow_paragraph").css("display", "inline-block");
             $("#webkit_box_shadow_paragraph").css("display", "inline-block");
             $("#moz_box_shadow_paragraph").css("display", "inline-block");
-            $("#css_box_shadow").html(bsPropOb.hshadow + " " + bsPropOb.vshadow + " " + bsPropOb.blur + " " + bsPropOb.spread + " " + bsPropOb.color + ";").prev().html("box-shadow: ");
-            $("#webkit_css_box_shadow").html(bsPropOb.hshadow + " " + bsPropOb.vshadow + " " + bsPropOb.blur + " " + bsPropOb.spread + " " + bsPropOb.color + ";").prev().html("-webkit-box-shadow: ");
-            $("#moz_css_box_shadow").html(bsPropOb.hshadow + " " + bsPropOb.vshadow + " " + bsPropOb.blur + " " + bsPropOb.spread + " " + bsPropOb.color + ";").prev().html("-moz-box-shadow: ");
+
+            $("#css_box_shadow").prev().html("box-shadow: ");
+            $("#bs_hs").html(bsPropOb.hshadow);
+            $("#bs_vs").html(bsPropOb.vshadow);
+            $("#bs_blur").html(bsPropOb.blur);
+            $("#bs_spread").html(bsPropOb.spread);
+            $("#bs_color").html(bsPropOb.color);
+
+            $("#webkit_css_box_shadow").prev().html("-webkit-box-shadow: ");
+            $("#webkit_bs_hs").html(bsPropOb.hshadow);
+            $("#webkit_bs_vs").html(bsPropOb.vshadow);
+            $("#webkit_bs_blur").html(bsPropOb.blur);
+            $("#webkit_bs_spread").html(bsPropOb.spread);
+            $("#webkit_bs_color").html(bsPropOb.color);
+
+            //Functionality for box shadow with -moz- prefix 
+            $("#moz_css_box_shadow").prev().html("-moz-box-shadow: ");
+            $("#moz_bs_hs").html(bsPropOb.hshadow);
+            $("#moz_bs_vs").html(bsPropOb.vshadow);
+            $("#moz_bs_blur").html(bsPropOb.blur);
+            $("#moz_bs_spread").html(bsPropOb.spread);
+            $("#moz_bs_color").html(bsPropOb.color);
             break;
         case false:
             $("#bsPara").css("display", "none");
@@ -968,100 +994,144 @@ $(".code_prop").on("click", function (e) {
     var span = "#" + $(this).attr("id");
     var spanWidth = $(this).width() + "px";
     var value = $(this).html();
-    $(span).css("display", "none");
-    switch (e.target.id != "css_color" && e.target.id != "css_background_color" && e.target.id != "css_text_align" && e.target.id != "css_text_transform" && e.target.id != "css_text_decoration" && e.target.id != "css_text_decoration" && e.target.id != "css_font_style" && e.target.id != "css_font_weight") {
-        case true:
+    switch (e.target.id) {
+        case "css_color":
+            $(span).css("display", "none");
+            input = "<input type='text' id='" + $(this).attr("id") + "input" + "'><i data-val='" + span + "' data-input='" + $(this).attr("id") + "input' class='fa fa-times' id='cross-close'></i>";
+            $(span).parent("p").append(input);
+            $(span).parent("p").find("input").spectrum({
+                color: $("#customColor").spectrum("get").toRgbString(),
+                preferredFormat: "rgb",
+                showButtons: false,
+                showPalette: true
+            });
+            break;
+        case "css_background_color":
+            $(span).css("display", "none");
+            input = "<input type='text' id='" + $(this).attr("id") + "input" + "'><i data-val='" + span + "' data-input='" + $(this).attr("id") + "input' class='fa fa-times' id='cross-close'></i>";
+            $(span).parent("p").append(input);
+            $(span).parent("p").find("input").spectrum({
+                color: $("#customBColor").spectrum("get").toRgbString(),
+                preferredFormat: "rgb",
+                showButtons: false,
+                showPalette: true
+            });
+            break;
+        case "css_text_align":
+            $(span).css("display", "none");
+            input = "<select name='text_align' data-val='" + span + "' id='css_text_alignselect'>" +
+                "<option disabled selected value='no_select'></option>" +
+                "<option value='left'>left</option>" +
+                "<option value='right'>right</option>" +
+                "<option value='center'>center</option>" +
+                "</select>";
+            $(span).parent("p").append(input);
+            break;
+        case "css_text_transform":
+            $(span).css("display", "none");
+            input = "<select name='text_transform' data-val='" + span + "' id='css_text_transformselect'>" +
+                "<option disabled selected value='no_select'></option>" +
+                "<option value='none'>none</option>" +
+                "<option value='uppercase'>uppercase</option>" +
+                "<option value='lowercase'>lowercase</option>" +
+                "</select>";
+            $(span).parent("p").append(input);
+            $(document).on("blur", "#code_output #css_text_transformselect", tabBlurEventOfTransform);
+            break;
+        case "css_text_decoration":
+            $(span).css("display", "none");
+            $(".multiselect_form").css("display", "inline-block");
+            break;
+        case "css_font_style":
+            $(span).css("display", "none");
+            input = "<select name='font_style' data-val='" + span + "' id='css_font_styleselect'>" +
+                "<option disabled selected value='no_select'></option>" +
+                "<option value='default'>default</option>" +
+                "<option value='oblique'>oblique</option>" +
+                "<option value='italic'>italic</option>" +
+                "</select>";
+            $(span).parent("p").append(input);
+            $(document).on("blur", "#css_font_styleselect", tabBlueEventOfFontStyle);
+            break;
+        case "css_font_weight":
+            $(span).css("display", "none");
+            input = "<select name='font_weight' data-val='" + span + "' id='css_font_weightselect'>" +
+                '<option disabled selected value="no_select"></option>' +
+                '<option value="100">Thin</option>' +
+                '<option value="200">Ultra Light</option>' +
+                '<option value="300">Light</option>' +
+                '<option value="400">Regular</option>' +
+                '<option value="500">Medium</option>' +
+                '<option value="600">Semi Bold</option>' +
+                '<option value="700">Bold</option>' +
+                '<option value="800">Extra Bold</option>' +
+                '<option value="900">Heavy</option>' +
+                '</select>';
+            $(span).parent("p").append(input);
+            $("#css_font_weightselect").val($("#fontWeightSelect").val()).prop("selected", true);
+            $(document).on("blur", "#css_font_weightselect", tabBlurEventOfFontWeight);
+            break;
+        case "css_font_variant":
+            $(span).css("display", "none");
+            input = "<select name='font_variant' data-val='" + span + "' id='css_font_variantselect'>" +
+                '<option disabled selected value="no_select"></option>' +
+                '<option value="default">default</option>' +
+                '<option value="small-caps">small-caps</option>' +
+                '</select>';
+            $(span).parent("p").append(input);
+            $(document).on("blur", "#css_font_variantselect", tabBlurEventOfFontVariant);
+            break;
+
+        //BOX SHADOW
+        case "bs_hs":
+        case "bs_vs":
+        case "bs_blur":
+        case "bs_spread":
+            input = "<input type='text' class='no_prefix' style='width:" + spanWidth + "' value='" + value + "' id='" + $(this).attr("id") + "input" + "' data-val='" + span + "'>";
+            $(span).html(input);
+            $(span + " input").focus();
+            break;
+        
+        case "bs_color":
+
+            break;
+        
+        //WEBKIT BOX SHADOW
+        case "webkit_bs_hs":
+        case "webkit_bs_vs":
+        case "webkit_bs_blur":
+        case "webkit_bs_spread":
+            input = "<input type='text' class='webkit' style='width:" + spanWidth + "' value='" + value + "' id='" + $(this).attr("id") + "input" + "' data-val='" + span + "'>";
+            $(span).html(input);
+            $(span + " input").focus();
+            break;
+            break;
+        
+        case "webkit_bs_color":
+
+            break;
+        
+        //MOZ BOW SHADOW
+        case "moz_bs_hs":
+        case "moz_bs_vs":
+        case "moz_bs_blur":
+        case "moz_bs_spread":
+            input = "<input type='text' class='moz' style='width:" + spanWidth + "' value='" + value + "' id='" + $(this).attr("id") + "input" + "' data-val='" + span + "'>";
+            $(span).html(input);
+            $(span + " input").focus();
+            break;
+        
+        case "moz_bs_color":
+            
+            break;
+        default:
             input = "<input type='text' style='width:" + spanWidth + "' value='" + value + "' id='" + $(this).attr("id") + "input" + "' data-val=" + span + ">";
             $(span).parent("p").append(input);
             $(span + "input").focus();
             break;
-        case false:
-            switch (e.target.id == "css_color") {
-                case true:
-                    input = "<input type='text' id='" + $(this).attr("id") + "input" + "'><i data-val='" + span + "' data-input='" + $(this).attr("id") + "input' class='fa fa-times' id='cross-close'></i>";
-                    $(span).parent("p").append(input);
-                    $(span).parent("p").find("input").spectrum({
-                        color: $("#customColor").spectrum("get").toRgbString(),
-                        preferredFormat: "rgb",
-                        showButtons: false,
-                        showPalette: true
-                    });
-                    break;
-            }
-            switch (e.target.id == "css_background_color") {
-                case true:
-                    input = "<input type='text' id='" + $(this).attr("id") + "input" + "'><i data-val='" + span + "' data-input='" + $(this).attr("id") + "input' class='fa fa-times' id='cross-close'></i>";
-                    $(span).parent("p").append(input);
-                    $(span).parent("p").find("input").spectrum({
-                        color: $("#customBColor").spectrum("get").toRgbString(),
-                        preferredFormat: "rgb",
-                        showButtons: false,
-                        showPalette: true
-                    });
-                    break;
-            }
-            switch (e.target.id == "css_text_align") {
-                case true:
-                    input = "<select name='text_align' data-val='" + span + "' id='css_text_alignselect'>" +
-                        "<option disabled selected value='no_select'></option>" +
-                        "<option value='left'>left</option>" +
-                        "<option value='right'>right</option>" +
-                        "<option value='center'>center</option>" +
-                        "</select>";
-                    $(span).parent("p").append(input);
-                    break;
-            }
-            switch (e.target.id == "css_text_transform") {
-                case true:
-                    input = "<select name='text_transform' data-val='" + span + "' id='css_text_transformselect'>" +
-                        "<option disabled selected value='no_select'></option>" +
-                        "<option value='none'>none</option>" +
-                        "<option value='uppercase'>uppercase</option>" +
-                        "<option value='lowercase'>lowercase</option>" +
-                        "</select>";
-                    $(span).parent("p").append(input);
-                    $(document).on("blur", "#code_output #css_text_transformselect", tabBlurEventOfTransform);
-                    break;
-            }
-            switch (e.target.id == "css_text_decoration") {
-                case true:
-                    $(".multiselect_form").css("display", "inline-block");
-                    break;
-            }
-            switch (e.target.id == "css_font_style") {
-                case true:
-                    input = "<select name='font_style' data-val='" + span + "' id='css_font_styleselect'>" +
-                        "<option disabled selected value='no_select'></option>" +
-                        "<option value='default'>default</option>" +
-                        "<option value='oblique'>oblique</option>" +
-                        "<option value='italic'>italic</option>" +
-                        "</select>";
-                    $(span).parent("p").append(input);
-                    $(document).on("blur", "#css_font_styleselect", tabBlueEventOfFontStyle);
-                    break;
-            }
-            switch (e.target.id == "css_font_weight") {
-                case true:
-                    input = "<select name='font_weight' data-val='" + span + "' id='css_font_weightselect'>" +
-                        '<option disabled selected value="no_select"></option>' +
-                        '<option value="100">Thin</option>' +
-                        '<option value="200">Ultra Light</option>' +
-                        '<option value="300">Light</option>' +
-                        '<option value="400">Regular</option>' +
-                        '<option value="500">Medium</option>' +
-                        '<option value="600">Semi Bold</option>' +
-                        '<option value="700">Bold</option>' +
-                        '<option value="800">Extra Bold</option>' +
-                        '<option value="900">Heavy</option>' +
-                        '</select>';
-                    $(span).parent("p").append(input);
-                    $("#css_font_weightselect").val($("#fontWeightSelect").val()).prop("selected", true);
-                    $(document).on("blur", "#css_font_weightselect", tabBlurEventOfFontWeight);
-                    break;
-            }
-            break;
     }
     $(document).on("blur", "#code_output input, #code_output #css_text_alignselect", tabBlurEvent);
+
 
 });//End of function
 
@@ -1127,9 +1197,17 @@ function tabBlueEventOfFontStyle() {
     }
 }//End of function
 
-//Function to clsoe select font_weight on blur
-function tabBlurEventOfFontWeight(){
+//Function to close select font_weight on blur
+function tabBlurEventOfFontWeight() {
     if (chosenVar == "css_font_weight" && $("#" + chosenVar + "select").val() != undefined) {
+        $($(this).attr("data-val")).css("display", "inline-block").html($(this).val());
+        $(this).remove();
+    }
+}//End of function
+
+//Function to close select font_variant on blur
+function tabBlurEventOfFontVariant() {
+    if (chosenVar == "css_font_variant" && $("#" + chosenVar + "select").val() != undefined) {
         $($(this).attr("data-val")).css("display", "inline-block").html($(this).val());
         $(this).remove();
     }
@@ -1350,8 +1428,39 @@ $(document).on("change", "#css_font_weightselect", function () {
     paraToChange.css("font-style", $(this).val());
     $("#fontWeightSelect").val($(this).val()).prop("selected", true);
     fontWeightFunction();
-});
+});//End of function
 
+//Function to change variant of the font
+$(document).on("change", "#css_font_variantselect", function () {
+    paraToChange.css("font-style", $(this).val());
+    switch ($(this).val()) {
+        case "default":
+            $("#normalFV").click();
+            break;
+        case "small-caps":
+            $("#smallCaps").click();
+            break;
+    }
+    fontVariantFunction();
+});//End of funtion
 //End of function for FONT FORMAT
+
+//Function to change options (BOX SHADOW)
+$(document).on("input", "input.no_prefix, input.webkit, input.moz", function(e){
+    var el_class = $(this).attr("class");
+    switch(el_class){
+        case "no_prefix":
+            switch(e.which){
+                case 38:
+                    
+                    break;
+                case 40:
+
+                    break;
+            }
+            break;
+    }
+});
+//End of function for BOX SHADOW
 
 //-------End of CSS editable mode func.-------//
