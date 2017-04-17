@@ -551,10 +551,13 @@ $("#hsRange, #vsRange, #bRange, #spRange").on("input", function () {
 });//End of the function
 
 //Function is responsible for the button to generate box-shadow property for the text
-$("#boxShadowGen").on("click", function (e) {
-    e.preventDefault();
+$("#boxShadowGen").on("click", function () {
+    addBoxShadow();
+});//End of the function
+
+function addBoxShadow(){
     $("#boxShadowGen").val(bsPropOb.hshadow + " " + bsPropOb.vshadow + " " + bsPropOb.blur + " " + bsPropOb.spread + " " + bsPropOb.color);
-    paraToChange.css("box-shadow", $(this).val());
+    paraToChange.css("box-shadow", $("#boxShadowGen").val());
     switch (bsPropOb.color != "rgba(0, 0, 0, 0)" && ((bsPropOb.hshadow != 0 && bsPropOb.hshadow != "0px") || (bsPropOb.vshadow != 0 && bsPropOb.vshadow != "0px") || (bsPropOb.blur != 0 && bsPropOb.blur != "0px") || (bsPropOb.spread != 0 && bsPropOb.spread != "0px"))) {
         case true:
             $("#bsPara").css("display", "block");
@@ -594,7 +597,8 @@ $("#boxShadowGen").on("click", function (e) {
             $("#moz_box_shadow_paragraph").css("display", "none");
             break;
     }
-});//End of the function
+}
+
 //--------------End of Box Shadow-------------//
 
 //-------------Text Shadow--------------------//
@@ -1446,16 +1450,164 @@ $(document).on("change", "#css_font_variantselect", function () {
 //End of function for FONT FORMAT
 
 //Function to change options (BOX SHADOW)
-$(document).on("input", "input.no_prefix, input.webkit, input.moz", function(e){
+$(document).on("keydown", "input.no_prefix, input.webkit, input.moz", function(e){
+    e.preventDefault();
     var el_class = $(this).attr("class");
+    var value = parseInt($(this).val().match(/\d+/));
+    var new_Value = value;
     switch(el_class){
         case "no_prefix":
-            switch(e.which){
-                case 38:
-                    
+            switch($(this).attr("id")){
+                case "bs_hsinput":
+                    switch(e.which){
+                        case 38:
+                            if (new_Value < 20){
+                                new_Value++;
+                            }
+                            break;
+                        case 40:
+                            if (new_Value > -20){
+                                new_Value--;
+                            }                            
+                            break;
+                    }
+                    $(this).val(new_Value + "px");
+                    $("#hsRange").val(new_Value);
+                    $("hsRangeSpan").html(new_Value + "px");
+                    $("#webkit_bs_hs").html(new_Value + "px");
+                    $("#moz_bs_hs").html(new_Value + "px");
+                    bsPropOb.hshadow = new_Value + "px";
+                    addBoxShadow();
                     break;
-                case 40:
+                case "bs_vsinput":
+                    switch(e.which){
+                        case 38:
+                            if (new_Value < 20){
+                                new_Value++;
+                            }
+                            break;
+                        case 40:
+                            if (new_Value > -20){
+                                new_Value--;
+                            }
+                            break;
+                    }
+                    break;
+                case "bs_blurinput":
+                    switch(e.which){
+                        case 38:
+                            if (new_Value < 20){
+                                new_Value++;
+                            }
+                            break;
+                        case 40:
+                            if (new_Value > 0){
+                                new_Value--;
+                            }
+                            break;
+                    }
+                    break;
+                case "bs_spreadinput":
+                    switch(e.which){
+                        case 38:
+                            if (new_Value < 20){
+                                new_Value++;
+                            }
+                            break;
+                        case 40:
+                            if (new_Value > 0){
+                                new_Value--;
+                            }
+                            break;
+                    }
+                    break;
+            }
+            break;
+        case "webkit":
+            switch($(this).attr("id")){
+                case "webkit_bs_hsinput":
+                    switch(e.which){
+                        case 38:
 
+                            break;
+                        case 40:
+
+                            break;
+                    }
+                    break;
+                case "webkit_bs_vsinput":
+                    switch(e.which){
+                        case 38:
+
+                            break;
+                        case 40:
+
+                            break;
+                    }
+                    break;
+                case "webkit_bs_blurinput":
+                    switch(e.which){
+                        case 38:
+
+                            break;
+                        case 40:
+
+                            break;
+                    }
+                    break;
+                case "webkit_bs_spreadinput":
+                    switch(e.which){
+                        case 38:
+
+                            break;
+                        case 40:
+
+                            break;
+                    }
+                    break;
+            }
+            break;
+        case "moz":
+            switch($(this).attr("id")){
+                case "moz_bs_hsinput":
+                    switch(e.which){
+                        case 38:
+
+                            break;
+                        case 40:
+
+                            break;
+                    }
+                    break;
+                case "moz_bs_vsinput":
+                    switch(e.which){
+                        case 38:
+
+                            break;
+                        case 40:
+
+                            break;
+                    }
+                    break;
+                case "moz_bs_blurinput":
+                    switch(e.which){
+                        case 38:
+
+                            break;
+                        case 40:
+
+                            break;
+                    }
+                    break;
+                case "moz_bs_spreadinput":
+                    switch(e.which){
+                        case 38:
+
+                            break;
+                        case 40:
+
+                            break;
+                    }
                     break;
             }
             break;
